@@ -10,6 +10,10 @@ import Badge from "@material-ui/core/Badge";
 // Styles
 import { Wrapper } from "./App.styles";
 
+const getProducts = async () => {
+  await (await fetch("https://fakestoreapi.com/products")).json();
+};
+
 const App = () => {
   const [] = useState();
   return <div className="App">Start</div>;
