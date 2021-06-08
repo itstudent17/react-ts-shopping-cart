@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCartIcon";
 import Badge from "@material-ui/core/Badge";
 // Styles
+import { Wrapper } from "./App.styles";
 
 const App = () => {
   const [] = useState();
