@@ -5,17 +5,32 @@ import { useQuery } from "react-query";
 import Drawer from "@material-ui/core/Drawer";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Grid from "@material-ui/core/Grid";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCartIcon";
+// import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCartIcon";
 import Badge from "@material-ui/core/Badge";
 // Styles
 import { Wrapper } from "./App.styles";
-
-const getProducts = async () => {
-  await (await fetch("https://fakestoreapi.com/products")).json();
+// Types
+export type CartItemType = {
+  id: number;
+  category: string;
+  description: string;
+  image: string;
+  price: number;
+  title: string;
+  amount: number;
 };
+
+const getProducts = async (): Promise<CartItemType[]> =>
+  await (await fetch("https://fakestoreapi.com/products?limit=5")).json();
 
 const App = () => {
   const [] = useState();
+  const { data, isLoading, error } = useQuery<CartItemType[]>(
+    "products",
+    getProducts
+  );
+  console.log("data", data);
+
   return <div className="App">Start</div>;
 };
 
